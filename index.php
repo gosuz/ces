@@ -4,7 +4,7 @@
   // How do i get the value of the submit post?
 // }
 
-// hello
+// 
 
 $nasmCompensationList = array("footFlattens","heelRises", "kneeMovesInward", "kneeMovesOutward", "excessiveForwardLean", "lowBackArches","lowBackRounds", "asymmetricalWeightShift", "armsFallForward", "forwardHead", "shoulderElevation"); //List of the compensations organized in an array
 
