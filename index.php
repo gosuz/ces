@@ -65,35 +65,33 @@ $shoulderElevationOaUaArray = array(
 
 $nasmFullCompensationList = array($feetTurnsOutOaUaArray, $footFlattensOaUaArray, $heelRisesOaUaArray, $kneeMovesInwardOaUaArray, $kneeMovesOutwardOaUaArray, $excessiveForwardLeanOaUaArray, $lowBackArchesOaUaArray, $lowBackRoundsOaUaArray, $asymmetricalWeightShiftOaUaArray, $armsFallForwardOaUaArray, $forwardHeadOaUaArray, $shoulderElevationOaUaArray);
 
-if (isset($_POST['submit'])) {
-  $checkBoxes =  $_POST['compensations'];
 
+if (isset($_POST['submit'])) {
+  if ($_POST['compensations'] === NULL) {
+    echo '<p style = "color: red;">ERROR: Please check at least one box</p>';
+  }else {
+  $checkBoxes =  $_POST['compensations'];
   foreach($checkBoxes as $value) {
     foreach($nasmFullCompensationList as $nasmCompensation) {
       // echo "You have $nasmCompensation";
     // var_dump("NasmCompensation:".$nasmCompensation['name']."Value:"."$value"."<br>");
     if ($value === $nasmCompensation['name']) {// nasmCompensation "name" => its value
       // you want to see if the compensation they checked exists. because it exists you're gonna print out the value of the array of OA msucles of Feet turn out
-      echo "Compensation: $value <br>Likely overactive muscles are: <br>";
+      
+      echo "<p>Compensation: $value </p>Likely overactive muscles are: <br>";
       foreach($nasmCompensation['OA'] as $overActiveMuscles){
         echo $overActiveMuscles."<br>";
       }
-
-      echo "Most likely underactive muscles are: <br>";
+      
+      echo "<br>Most likely underactive muscles are: <br>";
       foreach($nasmCompensation['UA'] as $underActiveMuscles){
         echo $underActiveMuscles."<br>";
       }
     }
   }
-   
-  if ($_POST['compensations'] !== NULL) {
-    echo "Thanks for ticking at least one box";
-  
-  } else {
-    echo '<p style = "color: red;">ERROR: Please check at least one box</p>';
+  }
   }
 } 
-}
 ?>
 
 <html>
